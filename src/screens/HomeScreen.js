@@ -18,6 +18,14 @@ const CALCULATORS = [
     color: '#6A1B9A',
     icon: 'B',
   },
+  {
+    key: 'bending',
+    title: 'Conduit Bending',
+    subtitle: 'Stub, Offset, Kick, Saddle',
+    description: 'Interactive bending calculator with visuals',
+    color: '#2E7D32',
+    icon: '∠',
+  },
 ];
 
 export default function HomeScreen({ onNavigate }) {

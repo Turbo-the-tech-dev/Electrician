@@ -2,6 +2,7 @@ import { useState } from 'react';
 import HomeScreen from './src/screens/HomeScreen';
 import OhmsLawScreen from './src/screens/OhmsLawScreen';
 import AmperesLawScreen from './src/screens/AmperesLawScreen';
+import ConduitBendingScreen from './src/screens/ConduitBendingScreen';
 
 export default function App() {
   const [screen, setScreen] = useState('home');
@@ -11,6 +12,9 @@ export default function App() {
   }
   if (screen === 'amperes') {
     return <AmperesLawScreen onBack={() => setScreen('home')} />;
+  }
+  if (screen === 'bending') {
+    return <ConduitBendingScreen onBack={() => setScreen('home')} />;
   }
   return <HomeScreen onNavigate={setScreen} />;
 }

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrician — Free Electrical Calculator App</title>
+  <meta name="description" content="Free electrical calculator app for Android and iOS. Ohm's Law, Ampere's Law, conduit bending, and more. No ads, no tracking, 100% offline.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ── Hero ──────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #212121 0%, #37474f 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 24px 60px;
+    }
+    .hero-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: #1565c0;
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(21,101,192,0.4);
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .hero .tagline {
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      margin-top: 10px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+    }
+    .badge.green { background: #2e7d32; color: #fff; }
+
+    /* ── Features ──────────────────────── */
+    .features {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 36px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.15s ease;
+    }
+    .feature-card:hover { transform: translateY(-2px); }
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 6px;
+    }
+    .feature-card .formula {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* ── Highlights ────────────────────── */
+    .highlights {
+      background: #fff;
+      padding: 48px 20px;
+    }
+    .highlights-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .highlights h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 36px;
+    }
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+    .highlight-item .number {
+      font-size: 36px;
+      font-weight: 800;
+      color: #1565c0;
+    }
+    .highlight-item .label {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* ── Privacy banner ────────────────── */
+    .privacy-banner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+    .privacy-box {
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .privacy-box .shield {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .privacy-box h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #2e7d32;
+      margin-bottom: 4px;
+    }
+    .privacy-box p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* ── CTA ───────────────────────────── */
+    .cta {
+      background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .cta h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .cta p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s ease;
+    }
+    .cta-btn:hover { transform: translateY(-1px); }
+    .cta-btn.primary {
+      background: #fff;
+      color: #1565c0;
+    }
+    .cta-btn.secondary {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    /* ── Footer ────────────────────────── */
+    .footer {
+      background: #212121;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 13px;
+    }
+    .footer a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .footer a:hover { color: #fff; }
+    .footer .links { margin-bottom: 12px; }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 32px; }
+      .hero { padding: 60px 20px 48px; }
+      .privacy-box { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-icon">&Omega;</div>
+    <h1>Electrician</h1>
+    <p class="tagline">Free electrical calculators built for the job site. Ohm's Law, Ampere's Law, conduit bending, and more.</p>
+    <div class="hero-badges">
+      <span class="badge green">100% Free</span>
+      <span class="badge">No Ads</span>
+      <span class="badge">No Tracking</span>
+      <span class="badge">Works Offline</span>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="features">
+    <h2>Built for Electricians</h2>
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#1565c0;">&Omega;</div>
+        <h3>Ohm's Law Calculator</h3>
+        <p class="formula">V = I &times; R</p>
+        <p>Enter any 2 of Voltage, Current, Resistance, or Power &mdash; get the other 2 instantly. Includes the full 12-formula power wheel reference.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#6a1b9a;">B</div>
+        <h3>Ampere's Law Calculator</h3>
+        <p class="formula">B = &mu;&#8320;I / 2&pi;r</p>
+        <p>Calculate magnetic fields for straight wires, solenoids, and toroids. Switch between configurations with one tap.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#2e7d32;">&ang;</div>
+        <h3>Conduit Bending</h3>
+        <p class="formula">Stub &middot; Offset &middot; Kick &middot; Saddle</p>
+        <p>Interactive bending calculator with visual diagrams. Supports stub-up 90&deg;, offsets, kicks, 3-bend saddles, and 4-bend saddles. Results in decimal and fractions.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="highlights">
+    <div class="highlights-inner">
+      <h2>By the Numbers</h2>
+      <div class="highlight-grid">
+        <div class="highlight-item">
+          <div class="number">3</div>
+          <div class="label">Calculators</div>
+        </div>
+        <div class="highlight-item">
+          <div class="number">12</div>
+          <div class="label">Ohm's Law formulas</div>
+        </div>
+        <div class="highlight-item">
+          <div class="number">5</div>
+          <div class="label">Bend types</div>
+        </div>
+        <div class="highlight-item">
+          <div class="number">$0</div>
+          <div class="label">Forever</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Banner -->
+  <div class="privacy-banner">
+    <div class="privacy-box">
+      <div class="shield">&#128737;</div>
+      <div>
+        <h3>Your Privacy Matters</h3>
+        <p>We don't collect, store, or share any of your data. No analytics, no ads, no third-party services. Everything runs locally on your device &mdash; no internet required.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Get the App</h2>
+    <p>Free forever. No account needed. Just open and calculate.</p>
+    <div class="cta-buttons">
+      <a href="https://github.com/Turbo-the-tech-dev/Electrician" class="cta-btn primary">View on GitHub</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="links">
+      <a href="terms.html">Terms of Service</a> &middot;
+      <a href="privacy.html">Privacy Policy</a> &middot;
+      <a href="https://github.com/Turbo-the-tech-dev/Electrician">GitHub</a>
+    </div>
+    <p>Electrician App &mdash; Free for everyone</p>
+  </div>
+
+</body>
+</html>

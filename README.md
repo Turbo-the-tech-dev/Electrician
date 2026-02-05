@@ -1,19 +1,21 @@
 # Electrician
 
-A mobile app for electricians featuring essential electrical calculators.
+A mobile app for electricians featuring essential electrical calculators. Built with React Native + Expo for Android and iOS.
 
 ## Features
 
 ### Ohm's Law Calculator
 - Enter any **2 values** (Voltage, Current, Resistance, Power) and instantly calculate the remaining values
-- Supports all Ohm's Law relationships: V=IR, P=VI, and derived formulas
+- Covers all **12 formulas** from the Ohm's Law power wheel
+- Full power wheel reference card (V, I, R, P sections with 3 formulas each)
 - Input validation and error handling
-- Clean, professional UI
 
-## Tech Stack
-
-- **React Native** with **Expo** — cross-platform for Android and iOS
-- No external dependencies beyond Expo defaults
+### Ampere's Law Calculator
+- **Straight Wire**: B = μ₀I / 2πr
+- **Solenoid**: B = μ₀nI (with turns and length)
+- **Toroid**: B = μ₀NI / 2πr (with turns and mean radius)
+- Mode selector to switch between configurations
+- Quick reference with μ₀ constant
 
 ## Getting Started
 
@@ -33,9 +35,6 @@ npm run web
 ## Building for Production
 
 ```bash
-# Build for Android (APK/AAB)
 npx expo build:android
-
-# Build for iOS
 npx expo build:ios
 ```

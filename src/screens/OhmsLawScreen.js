@@ -13,7 +13,7 @@ import { StatusBar } from 'expo-status-bar';
 import InputField from '../components/InputField';
 import { calculate } from '../utils/ohmsLaw';
 
-export default function OhmsLawScreen() {
+export default function OhmsLawScreen({ onBack }) {
   const [voltage, setVoltage] = useState('');
   const [current, setCurrent] = useState('');
   const [resistance, setResistance] = useState('');
@@ -42,7 +42,6 @@ export default function OhmsLawScreen() {
     setError('');
   };
 
-  // Count how many fields have input
   const filledCount = [voltage, current, resistance, power].filter(
     (v) => v !== ''
   ).length;
@@ -51,8 +50,17 @@ export default function OhmsLawScreen() {
     <View style={styles.screen}>
       <StatusBar style="light" />
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Ohm's Law</Text>
-        <Text style={styles.headerSubtitle}>V = I × R</Text>
+        <View style={styles.headerTop}>
+          {onBack && (
+            <TouchableOpacity onPress={onBack} style={styles.backButton} activeOpacity={0.7}>
+              <Text style={styles.backText}>{'<'} Back</Text>
+            </TouchableOpacity>
+          )}
+          <View style={styles.headerTitleWrap}>
+            <Text style={styles.headerTitle}>Ohm's Law</Text>
+            <Text style={styles.headerSubtitle}>V = I × R</Text>
+          </View>
+        </View>
       </View>
 
       <KeyboardAvoidingView
@@ -147,24 +155,55 @@ export default function OhmsLawScreen() {
             </View>
           </View>
 
-          <View style={styles.formulaCard}>
-            <Text style={styles.formulaTitle}>Quick Reference</Text>
-            <View style={styles.formulaGrid}>
-              <View style={styles.formulaItem}>
-                <Text style={styles.formulaSymbol}>V</Text>
-                <Text style={styles.formulaText}>= I × R</Text>
+          {/* Full Power Wheel — all 12 formulas */}
+          <View style={styles.wheelCard}>
+            <Text style={styles.wheelTitle}>Power Wheel — All 12 Formulas</Text>
+
+            {/* Voltage section */}
+            <View style={[styles.wheelSection, { backgroundColor: '#E3F2FD' }]}>
+              <Text style={[styles.wheelSectionLabel, { color: '#1565C0' }]}>
+                Voltage (V)
+              </Text>
+              <View style={styles.wheelFormulas}>
+                <Text style={styles.wheelFormula}>I × R</Text>
+                <Text style={styles.wheelFormula}>P / I</Text>
+                <Text style={styles.wheelFormula}>√(P × R)</Text>
               </View>
-              <View style={styles.formulaItem}>
-                <Text style={styles.formulaSymbol}>I</Text>
-                <Text style={styles.formulaText}>= V / R</Text>
+            </View>
+
+            {/* Current section */}
+            <View style={[styles.wheelSection, { backgroundColor: '#FFF3E0' }]}>
+              <Text style={[styles.wheelSectionLabel, { color: '#E65100' }]}>
+                Current (I)
+              </Text>
+              <View style={styles.wheelFormulas}>
+                <Text style={styles.wheelFormula}>V / R</Text>
+                <Text style={styles.wheelFormula}>P / V</Text>
+                <Text style={styles.wheelFormula}>√(P / R)</Text>
               </View>
-              <View style={styles.formulaItem}>
-                <Text style={styles.formulaSymbol}>R</Text>
-                <Text style={styles.formulaText}>= V / I</Text>
+            </View>
+
+            {/* Resistance section */}
+            <View style={[styles.wheelSection, { backgroundColor: '#E8F5E9' }]}>
+              <Text style={[styles.wheelSectionLabel, { color: '#2E7D32' }]}>
+                Resistance (R)
+              </Text>
+              <View style={styles.wheelFormulas}>
+                <Text style={styles.wheelFormula}>V / I</Text>
+                <Text style={styles.wheelFormula}>V² / P</Text>
+                <Text style={styles.wheelFormula}>P / I²</Text>
               </View>
-              <View style={styles.formulaItem}>
-                <Text style={styles.formulaSymbol}>P</Text>
-                <Text style={styles.formulaText}>= V × I</Text>
+            </View>
+
+            {/* Power section */}
+            <View style={[styles.wheelSection, { backgroundColor: '#FCE4EC' }]}>
+              <Text style={[styles.wheelSectionLabel, { color: '#C62828' }]}>
+                Power (P)
+              </Text>
+              <View style={styles.wheelFormulas}>
+                <Text style={styles.wheelFormula}>V × I</Text>
+                <Text style={styles.wheelFormula}>V² / R</Text>
+                <Text style={styles.wheelFormula}>I² × R</Text>
               </View>
             </View>
           </View>
@@ -175,13 +214,8 @@ export default function OhmsLawScreen() {
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
-  flex: {
-    flex: 1,
-  },
+  screen: { flex: 1, backgroundColor: '#F5F5F5' },
+  flex: { flex: 1 },
   header: {
     backgroundColor: '#1565C0',
     paddingTop: 54,
@@ -195,20 +229,13 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 8,
   },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: '800',
-    color: '#fff',
-  },
-  headerSubtitle: {
-    fontSize: 16,
-    color: 'rgba(255,255,255,0.8)',
-    marginTop: 4,
-  },
-  scrollContent: {
-    padding: 16,
-    paddingBottom: 40,
-  },
+  headerTop: { flexDirection: 'row', alignItems: 'flex-start' },
+  backButton: { marginRight: 12, paddingTop: 4 },
+  backText: { color: 'rgba(255,255,255,0.9)', fontSize: 16, fontWeight: '600' },
+  headerTitleWrap: { flex: 1 },
+  headerTitle: { fontSize: 28, fontWeight: '800', color: '#fff' },
+  headerSubtitle: { fontSize: 16, color: 'rgba(255,255,255,0.8)', marginTop: 4 },
+  scrollContent: { padding: 16, paddingBottom: 40 },
   card: {
     backgroundColor: '#fff',
     borderRadius: 16,
@@ -219,28 +246,10 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 3,
   },
-  instructions: {
-    fontSize: 14,
-    color: '#777',
-    textAlign: 'center',
-    marginBottom: 18,
-  },
-  errorBox: {
-    backgroundColor: '#FFEBEE',
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-  },
-  errorText: {
-    color: '#C62828',
-    fontSize: 14,
-    textAlign: 'center',
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    gap: 12,
-    marginTop: 6,
-  },
+  instructions: { fontSize: 14, color: '#777', textAlign: 'center', marginBottom: 18 },
+  errorBox: { backgroundColor: '#FFEBEE', borderRadius: 8, padding: 12, marginBottom: 12 },
+  errorText: { color: '#C62828', fontSize: 14, textAlign: 'center' },
+  buttonRow: { flexDirection: 'row', gap: 12, marginTop: 6 },
   calcButton: {
     flex: 2,
     backgroundColor: '#1565C0',
@@ -253,16 +262,8 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 4,
   },
-  calcButtonDisabled: {
-    backgroundColor: '#B0BEC5',
-    shadowOpacity: 0,
-    elevation: 0,
-  },
-  calcButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '700',
-  },
+  calcButtonDisabled: { backgroundColor: '#B0BEC5', shadowOpacity: 0, elevation: 0 },
+  calcButtonText: { color: '#fff', fontSize: 18, fontWeight: '700' },
   resetButton: {
     flex: 1,
     backgroundColor: '#fff',
@@ -272,12 +273,10 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: '#E0E0E0',
   },
-  resetButtonText: {
-    color: '#666',
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  formulaCard: {
+  resetButtonText: { color: '#666', fontSize: 18, fontWeight: '600' },
+
+  // Power Wheel styles
+  wheelCard: {
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 20,
@@ -288,35 +287,35 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 3,
   },
-  formulaTitle: {
+  wheelTitle: {
     fontSize: 16,
     fontWeight: '700',
     color: '#333',
-    marginBottom: 14,
     textAlign: 'center',
+    marginBottom: 14,
   },
-  formulaGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+  wheelSection: {
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 10,
   },
-  formulaItem: {
-    width: '48%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F5F5F5',
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 8,
-  },
-  formulaSymbol: {
-    fontSize: 20,
+  wheelSectionLabel: {
+    fontSize: 15,
     fontWeight: '800',
-    color: '#1565C0',
-    marginRight: 8,
+    marginBottom: 6,
   },
-  formulaText: {
-    fontSize: 16,
-    color: '#555',
+  wheelFormulas: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  wheelFormula: {
+    fontSize: 15,
+    color: '#444',
+    fontWeight: '500',
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+    overflow: 'hidden',
   },
 });

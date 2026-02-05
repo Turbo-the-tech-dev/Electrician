@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 const CALCULATORS = [
@@ -37,7 +37,7 @@ export default function HomeScreen({ onNavigate }) {
         <Text style={styles.headerSubtitle}>Electrical Calculators</Text>
       </View>
 
-      <View style={styles.content}>
+      <ScrollView contentContainerStyle={styles.content}>
         {CALCULATORS.map((calc) => (
           <TouchableOpacity
             key={calc.key}
@@ -56,7 +56,22 @@ export default function HomeScreen({ onNavigate }) {
             <Text style={styles.chevron}>{'>'}</Text>
           </TouchableOpacity>
         ))}
-      </View>
+
+        {/* Footer — Legal */}
+        <View style={styles.footer}>
+          <Text style={styles.footerBadge}>Free for everyone</Text>
+          <View style={styles.footerLinks}>
+            <TouchableOpacity onPress={() => onNavigate('terms')} activeOpacity={0.6}>
+              <Text style={styles.footerLink}>Terms of Service</Text>
+            </TouchableOpacity>
+            <Text style={styles.footerDot}>  ·  </Text>
+            <TouchableOpacity onPress={() => onNavigate('privacy')} activeOpacity={0.6}>
+              <Text style={styles.footerLink}>Privacy Policy</Text>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.footerVersion}>v1.0.0</Text>
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -105,4 +120,42 @@ const styles = StyleSheet.create({
   cardFormula: { fontSize: 14, color: '#666', marginTop: 2 },
   cardDesc: { fontSize: 12, color: '#999', marginTop: 2 },
   chevron: { fontSize: 22, color: '#ccc', fontWeight: '300' },
+
+  // Footer
+  footer: {
+    alignItems: 'center',
+    marginTop: 24,
+    paddingTop: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#E0E0E0',
+  },
+  footerBadge: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#2E7D32',
+    backgroundColor: '#E8F5E9',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+    overflow: 'hidden',
+    marginBottom: 12,
+  },
+  footerLinks: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  footerLink: {
+    fontSize: 13,
+    color: '#666',
+    fontWeight: '500',
+  },
+  footerDot: {
+    fontSize: 13,
+    color: '#ccc',
+  },
+  footerVersion: {
+    fontSize: 11,
+    color: '#bbb',
+    marginTop: 8,
+  },
 });

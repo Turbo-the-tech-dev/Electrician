@@ -34,6 +34,14 @@ const CALCULATORS = [
     color: '#E65100',
     icon: 'W',
   },
+  {
+    key: 'transformers',
+    title: 'Transformers',
+    subtitle: 'V1/V2 = N1/N2 = I2/I1',
+    description: 'Turns ratio, voltage, current & kVA rating',
+    color: '#283593',
+    icon: 'T',
+  },
 ];
 
 export default function HomeScreen({ onNavigate }) {

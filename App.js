@@ -3,6 +3,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import OhmsLawScreen from './src/screens/OhmsLawScreen';
 import AmperesLawScreen from './src/screens/AmperesLawScreen';
 import VoltageDividerScreen from './src/screens/VoltageDividerScreen';
+import ResidentialWiringScreen from './src/screens/ResidentialWiringScreen';
 
 export default function App() {
   const [screen, setScreen] = useState('home');
@@ -15,6 +16,9 @@ export default function App() {
   }
   if (screen === 'divider') {
     return <VoltageDividerScreen onBack={() => setScreen('home')} />;
+  }
+  if (screen === 'residential') {
+    return <ResidentialWiringScreen onBack={() => setScreen('home')} />;
   }
   return <HomeScreen onNavigate={setScreen} />;
 }

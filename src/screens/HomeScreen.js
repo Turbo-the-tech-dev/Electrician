@@ -26,6 +26,14 @@ const CALCULATORS = [
     color: '#00796B',
     icon: 'V',
   },
+  {
+    key: 'residential',
+    title: 'Residential Wiring',
+    subtitle: 'NEC Article 220 & Table 310.16',
+    description: 'Load calculations & wire ampacity charts',
+    color: '#E65100',
+    icon: 'W',
+  },
 ];
 
 export default function HomeScreen({ onNavigate }) {

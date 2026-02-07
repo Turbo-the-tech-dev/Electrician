@@ -18,6 +18,14 @@ const CALCULATORS = [
     color: '#6A1B9A',
     icon: 'B',
   },
+  {
+    key: 'divider',
+    title: 'Voltage Divider',
+    subtitle: 'Vout = Vin × R2 / (R1 + R2)',
+    description: 'Calculate voltage, resistances & divider current',
+    color: '#00796B',
+    icon: 'V',
+  },
 ];
 
 export default function HomeScreen({ onNavigate }) {

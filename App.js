@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import HomeScreen from './src/screens/HomeScreen';
 import OhmsLawScreen from './src/screens/OhmsLawScreen';
+import VoltageDropScreen from './src/screens/VoltageDropScreen';
 import AmperesLawScreen from './src/screens/AmperesLawScreen';
 import VoltageDividerScreen from './src/screens/VoltageDividerScreen';
 import ResidentialWiringScreen from './src/screens/ResidentialWiringScreen';
@@ -11,6 +12,9 @@ export default function App() {
 
   if (screen === 'ohms') {
     return <OhmsLawScreen onBack={() => setScreen('home')} />;
+  }
+  if (screen === 'voltageDrop') {
+    return <VoltageDropScreen onBack={() => setScreen('home')} />;
   }
   if (screen === 'amperes') {
     return <AmperesLawScreen onBack={() => setScreen('home')} />;

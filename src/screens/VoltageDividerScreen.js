@@ -12,6 +12,9 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import InputField from '../components/InputField';
 import { calculate } from '../utils/voltageDivider';
+import { colors } from '../theme';
+
+const PRIMARY_COLOR = colors.calculators.divider;
 
 export default function VoltageDividerScreen({ onBack }) {
   const [inputVoltage, setInputVoltage] = useState('');
@@ -211,7 +214,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#F5F5F5' },
   flex: { flex: 1 },
   header: {
-    backgroundColor: '#00796B',
+    backgroundColor: PRIMARY_COLOR,
     paddingTop: 54,
     paddingBottom: 20,
     paddingHorizontal: 20,
@@ -246,11 +249,11 @@ const styles = StyleSheet.create({
   buttonRow: { flexDirection: 'row', gap: 12, marginTop: 6 },
   calcButton: {
     flex: 2,
-    backgroundColor: '#00796B',
+    backgroundColor: PRIMARY_COLOR,
     paddingVertical: 15,
     borderRadius: 12,
     alignItems: 'center',
-    shadowColor: '#00796B',
+    shadowColor: PRIMARY_COLOR,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 6,
@@ -290,7 +293,7 @@ const styles = StyleSheet.create({
   diagramText: {
     fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
     fontSize: 13,
-    color: '#00796B',
+    color: PRIMARY_COLOR,
     lineHeight: 18,
   },
   refGrid: { gap: 8 },
@@ -302,6 +305,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 12,
   },
-  refLabel: { fontSize: 14, fontWeight: '600', color: '#00796B' },
+  refLabel: { fontSize: 14, fontWeight: '600', color: PRIMARY_COLOR },
   refFormula: { fontSize: 14, color: '#555' },
 });

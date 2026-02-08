@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ThemeProvider } from './src/theme/ThemeContext';
 import HomeScreen from './src/screens/HomeScreen';
 import OhmsLawScreen from './src/screens/OhmsLawScreen';
 import VoltageDropScreen from './src/screens/VoltageDropScreen';
@@ -10,23 +11,22 @@ import TransformersScreen from './src/screens/TransformersScreen';
 export default function App() {
   const [screen, setScreen] = useState('home');
 
+  let content;
   if (screen === 'ohms') {
-    return <OhmsLawScreen onBack={() => setScreen('home')} />;
+    content = <OhmsLawScreen onBack={() => setScreen('home')} />;
+  } else if (screen === 'voltageDrop') {
+    content = <VoltageDropScreen onBack={() => setScreen('home')} />;
+  } else if (screen === 'amperes') {
+    content = <AmperesLawScreen onBack={() => setScreen('home')} />;
+  } else if (screen === 'divider') {
+    content = <VoltageDividerScreen onBack={() => setScreen('home')} />;
+  } else if (screen === 'residential') {
+    content = <ResidentialWiringScreen onBack={() => setScreen('home')} />;
+  } else if (screen === 'transformers') {
+    content = <TransformersScreen onBack={() => setScreen('home')} />;
+  } else {
+    content = <HomeScreen onNavigate={setScreen} />;
   }
-  if (screen === 'voltageDrop') {
-    return <VoltageDropScreen onBack={() => setScreen('home')} />;
-  }
-  if (screen === 'amperes') {
-    return <AmperesLawScreen onBack={() => setScreen('home')} />;
-  }
-  if (screen === 'divider') {
-    return <VoltageDividerScreen onBack={() => setScreen('home')} />;
-  }
-  if (screen === 'residential') {
-    return <ResidentialWiringScreen onBack={() => setScreen('home')} />;
-  }
-  if (screen === 'transformers') {
-    return <TransformersScreen onBack={() => setScreen('home')} />;
-  }
-  return <HomeScreen onNavigate={setScreen} />;
+
+  return <ThemeProvider>{content}</ThemeProvider>;
 }

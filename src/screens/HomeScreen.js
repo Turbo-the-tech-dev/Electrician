@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { colors } from '../theme';
 
 const CALCULATORS = [
   {
@@ -7,7 +8,7 @@ const CALCULATORS = [
     title: "Ohm's Law",
     subtitle: 'V = I × R',
     description: 'Voltage, Current, Resistance & Power',
-    color: '#1565C0',
+    color: colors.calculators.ohms,
     icon: 'Ω',
   },
   {
@@ -15,7 +16,7 @@ const CALCULATORS = [
     title: 'Voltage Drop',
     subtitle: 'Vdrop = 2 × K × I × D / CMA',
     description: 'Wire sizing & NEC compliance calculator',
-    color: '#558B2F',
+    color: colors.calculators.voltageDrop,
     icon: 'Δ',
   },
   {
@@ -23,7 +24,7 @@ const CALCULATORS = [
     title: "Ampere's Law",
     subtitle: 'B = μ₀I / 2πr',
     description: 'Magnetic fields for wires, solenoids & toroids',
-    color: '#6A1B9A',
+    color: colors.calculators.amperes,
     icon: 'B',
   },
   {
@@ -31,7 +32,7 @@ const CALCULATORS = [
     title: 'Voltage Divider',
     subtitle: 'Vout = Vin × R2 / (R1 + R2)',
     description: 'Calculate voltage, resistances & divider current',
-    color: '#00796B',
+    color: colors.calculators.divider,
     icon: 'V',
   },
   {
@@ -39,7 +40,7 @@ const CALCULATORS = [
     title: 'Residential Wiring',
     subtitle: 'NEC Article 220 & Table 310.16',
     description: 'Load calculations & wire ampacity charts',
-    color: '#E65100',
+    color: colors.calculators.residential,
     icon: 'W',
   },
   {
@@ -47,7 +48,7 @@ const CALCULATORS = [
     title: 'Transformers',
     subtitle: 'V1/V2 = N1/N2 = I2/I1',
     description: 'Turns ratio, voltage, current & kVA rating',
-    color: '#283593',
+    color: colors.calculators.transformers,
     icon: 'T',
   },
 ];

@@ -12,6 +12,7 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import InputField from '../components/InputField';
 import { calculate } from '../utils/transformerCalculations';
+import { colors } from '../theme';
 
 export default function TransformersScreen({ onBack }) {
   const [primaryVoltage, setPrimaryVoltage] = useState('');
@@ -240,7 +241,7 @@ function ResultRow({ label, value, unit }) {
   );
 }
 
-const THEME = '#283593';
+const THEME = colors.calculators.transformers;
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#F5F5F5' },

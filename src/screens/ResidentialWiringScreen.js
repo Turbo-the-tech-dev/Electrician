@@ -13,6 +13,9 @@ import { StatusBar } from 'expo-status-bar';
 import InputField from '../components/InputField';
 import { calculateResidentialLoad } from '../utils/necCalculations';
 import { copperAmpacity, aluminumAmpacity } from '../data/ampacityCharts';
+import { colors } from '../theme';
+
+const PRIMARY_COLOR = colors.calculators.residential;
 
 const TEMP_LABELS = {
   temp60: '60°C',
@@ -204,7 +207,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#F5F5F5' },
   flex: { flex: 1 },
   header: {
-    backgroundColor: '#E65100',
+    backgroundColor: PRIMARY_COLOR,
     paddingTop: 54,
     paddingBottom: 20,
     paddingHorizontal: 20,
@@ -294,8 +297,8 @@ const styles = StyleSheet.create({
     borderColor: '#E0E0E0',
   },
   toggleActive: {
-    backgroundColor: '#E65100',
-    borderColor: '#E65100',
+    backgroundColor: PRIMARY_COLOR,
+    borderColor: PRIMARY_COLOR,
   },
   toggleText: { fontSize: 15, fontWeight: '600', color: '#666' },
   toggleTextActive: { color: '#fff' },

@@ -12,6 +12,9 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import InputField from '../components/InputField';
 import { calculate } from '../utils/ohmsLaw';
+import { colors } from '../theme';
+
+const PRIMARY_COLOR = colors.calculators.ohms;
 
 export default function OhmsLawScreen({ onBack }) {
   const [voltage, setVoltage] = useState('');
@@ -217,7 +220,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#F5F5F5' },
   flex: { flex: 1 },
   header: {
-    backgroundColor: '#1565C0',
+    backgroundColor: PRIMARY_COLOR,
     paddingTop: 54,
     paddingBottom: 20,
     paddingHorizontal: 20,
@@ -252,11 +255,11 @@ const styles = StyleSheet.create({
   buttonRow: { flexDirection: 'row', gap: 12, marginTop: 6 },
   calcButton: {
     flex: 2,
-    backgroundColor: '#1565C0',
+    backgroundColor: PRIMARY_COLOR,
     paddingVertical: 15,
     borderRadius: 12,
     alignItems: 'center',
-    shadowColor: '#1565C0',
+    shadowColor: PRIMARY_COLOR,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 6,

@@ -17,6 +17,9 @@ import {
   calculateSolenoid,
   calculateToroid,
 } from '../utils/amperesLaw';
+import { colors } from '../theme';
+
+const PRIMARY_COLOR = colors.calculators.amperes;
 
 export default function AmperesLawScreen({ onBack }) {
   const [mode, setMode] = useState('wire');
@@ -209,7 +212,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#F5F5F5' },
   flex: { flex: 1 },
   header: {
-    backgroundColor: '#6A1B9A',
+    backgroundColor: PRIMARY_COLOR,
     paddingTop: 54,
     paddingBottom: 20,
     paddingHorizontal: 20,
@@ -243,8 +246,8 @@ const styles = StyleSheet.create({
     borderColor: '#E0E0E0',
   },
   modeButtonActive: {
-    backgroundColor: '#6A1B9A',
-    borderColor: '#6A1B9A',
+    backgroundColor: PRIMARY_COLOR,
+    borderColor: PRIMARY_COLOR,
   },
   modeText: { fontSize: 13, fontWeight: '600', color: '#666' },
   modeTextActive: { color: '#fff' },
@@ -269,11 +272,11 @@ const styles = StyleSheet.create({
   buttonRow: { flexDirection: 'row', gap: 12, marginTop: 6 },
   calcButton: {
     flex: 2,
-    backgroundColor: '#6A1B9A',
+    backgroundColor: PRIMARY_COLOR,
     paddingVertical: 15,
     borderRadius: 12,
     alignItems: 'center',
-    shadowColor: '#6A1B9A',
+    shadowColor: PRIMARY_COLOR,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 6,
@@ -313,6 +316,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 12,
   },
-  refLabel: { fontSize: 14, fontWeight: '600', color: '#6A1B9A' },
+  refLabel: { fontSize: 14, fontWeight: '600', color: PRIMARY_COLOR },
   refFormula: { fontSize: 14, color: '#555' },
 });

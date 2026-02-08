@@ -11,6 +11,14 @@ const CALCULATORS = [
     icon: 'Ω',
   },
   {
+    key: 'voltageDrop',
+    title: 'Voltage Drop',
+    subtitle: 'Vdrop = 2 × K × I × D / CMA',
+    description: 'Wire sizing & NEC compliance calculator',
+    color: '#558B2F',
+    icon: 'Δ',
+  },
+  {
     key: 'amperes',
     title: "Ampere's Law",
     subtitle: 'B = μ₀I / 2πr',

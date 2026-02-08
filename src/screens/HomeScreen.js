@@ -51,6 +51,14 @@ const CALCULATORS = [
     color: colors.calculators.transformers,
     icon: 'T',
   },
+  {
+    key: 'ladderLogic',
+    title: 'Ladder Logic',
+    subtitle: 'PLC Motor Control',
+    description: 'Simulate start/stop, seal-in & fault circuits',
+    color: colors.calculators.ladderLogic,
+    icon: 'L',
+  },
 ];
 
 export default function HomeScreen({ onNavigate }) {

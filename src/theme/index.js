@@ -13,7 +13,8 @@ export const colors = {
     divider: '#00796B',     // Teal
     transformers: '#283593', // Dark Blue
     residential: '#E65100',  // Orange
-    voltageDrop: '#558B2F',  // Green (new)
+    voltageDrop: '#558B2F',  // Green
+    ladderLogic: '#C62828',  // Red (industrial/PLC)
   },
 
   // Light mode colors

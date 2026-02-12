@@ -59,6 +59,14 @@ const CALCULATORS = [
     color: colors.calculators.ladderLogic,
     icon: 'L',
   },
+  {
+    key: 'conduitFill',
+    title: 'Conduit Fill',
+    subtitle: 'NEC Chapter 9, Table 1',
+    description: 'Calculate fill percentage & recommend conduit size',
+    color: colors.calculators.conduitFill,
+    icon: 'C',
+  },
 ];
 
 export default function HomeScreen({ onNavigate }) {

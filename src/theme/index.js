@@ -15,6 +15,7 @@ export const colors = {
     residential: '#E65100',  // Orange
     voltageDrop: '#558B2F',  // Green
     ladderLogic: '#C62828',  // Red (industrial/PLC)
+    conduitFill: '#37474F',  // Blue Grey (conduit/raceway)
   },
 
   // Light mode colors

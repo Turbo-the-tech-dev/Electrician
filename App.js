@@ -8,6 +8,7 @@ import VoltageDividerScreen from './src/screens/VoltageDividerScreen';
 import ResidentialWiringScreen from './src/screens/ResidentialWiringScreen';
 import TransformersScreen from './src/screens/TransformersScreen';
 import LadderLogicScreen from './src/screens/LadderLogicScreen';
+import ConduitFillScreen from './src/screens/ConduitFillScreen';
 
 export default function App() {
   const [screen, setScreen] = useState('home');
@@ -27,6 +28,8 @@ export default function App() {
     content = <TransformersScreen onBack={() => setScreen('home')} />;
   } else if (screen === 'ladderLogic') {
     content = <LadderLogicScreen onBack={() => setScreen('home')} />;
+  } else if (screen === 'conduitFill') {
+    content = <ConduitFillScreen onBack={() => setScreen('home')} />;
   } else {
     content = <HomeScreen onNavigate={setScreen} />;
   }

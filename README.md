@@ -235,3 +235,58 @@ This app is provided for informational and educational purposes. Always consult 
 DOMINANCE A Directive from Lord Vader To the 10,000 Supporters of the Empire, You have been summoned for a task of critical importance. Our central index.html hub, while functional, lacks the perfection required for galactic dominance. It is slow, its structure is inefficient, and its presence is not felt across the network as it should be. This is unacceptable. Your mission is to collectively refactor this file into a bastion of technical excellence. You will not merely edit this page; you will re-forge it. Every line of code, every tag, every byte will be optimized for a single, unified purpose: absolute performance and control. I. Primary Objectives Your work will be measured against three strategic imperatives. Failure to meet them is not an option. 1. SEO DOMINANCE: The hub will achieve a top 10 ranking for its target keywords. Its presence will be known. We will not be buried in search results. 2. FLAWLESS ACCESSIBILITY: All users, regardless of ability, will be able to navigate our systems. We will adhere to WCAG 2.1 AA standards without deviation. True power is accessible to all who serve our vision. 3. SUPERIOR PERFORMANCE: The user experience will be immediate and seamless. We will master the Core Web Vitals, ensuring our platform is perceived as faster and more responsive than any rival. II. The Battle Plan We will proceed with organized, disciplined execution. The workflow is not a suggestion; it is protocol.
 
 Phase 1: Code Review: First, analyze the existing index.html. Identify its weaknesses and report them. A thorough reconnaissance is the foundation of a successful campaign. Phase 2: Task Assignment: Once weaknesses are identified, operational command will distribute specific tasks among you. You will have your orders. Phase 3: Development: Execute your assigned optimizations with precision. Adhere strictly to the technical specifications outlined below. Phase 4: Testing: Your work will be mercilessly tested against our defined metrics. Only that which performs flawlessly will proceed. Phase 5: Deployment: Verified, superior changes will be integrated into the main branch. III. Strategic Imperatives: Task Breakdown You will implement the following optimizations. This is the path to victory. Meta Tag Audit: Every page must have a unique and relevant identity. Audit and perfect the title, description, viewport, Open Graph, and Twitter Card meta tags. We will control how our assets are perceived. * Semantic HTML Structure: The document's structure will be logical and hierarchical. You will use header, nav, main, article, section, and footer tags to bring order. Headings (h1-h6) will be used as a clear chain of command, not for mere styling. * ARIA Role Implementation: Where native HTML is insufficient, you will use ARIA roles (role, aria-label, aria-labelledby) to clarify purpose and function. There will be no ambiguity. * Image & Asset Optimization: Every image must serve a purpose. Meaningful images will have descriptive alt attributes. Decorative images will be marked with alt="" to not distract screen readers. All assets will be optimized for size and delivery. Performance Enhancements: * Minification: All CSS and JavaScript will be minified. There will be no wasted bytes. Inline critical CSS for immediate rendering. * Lazy Loading: Images and iframes below the fold will be deferred using the loading="lazy" attribute or an Intersection Observer. The user's initial view will not be slowed by assets they cannot yet see. IV. Metrics of Success Your success will be measured by the following data points. They are absolute. SEO: Achieve and maintain Top 10 rankings for all target keywords, to be tracked via Google Search Console. * Performance: Achieve "Good" status in all Core Web Vitals, verified by PageSpeed Insights. * Largest Contentful Paint (LCP): < 2.5s * First Input Delay (FID): < 100ms Cumulative Layout Shift (CLS): < 0.1 * Accessibility: Attain 100% compliance on automated WCAG 2.1 AA checks using Lighthouse and WAVE, supplemented by manual verification. V. Protocols & Arsenal * Collaboration: All maneuvers will be coordinated through Git. All contributions will be submitted via pull requests and are subject to mandatory code reviews. * Approved Tools: Your arsenal includes Lighthouse, PageSpeed Insights, WAVE, and Google Search Console. Master them. * Reporting: You will provide weekly progress updates to command. A final metrics report will be submitted upon completion of the operation. The previous index.html was a product of disorder. This new version will be a testament to our strength, discipline, and focus on user-centric, ethical, and performant design. Now, go. Execute my will. Victory awaits.
+
+#IMPERIAL ACKNOWLEDGMENT
+TO: White Hat Division Operative
+FROM: Supreme Commander (AI Assistant)
+SUBJECT: Execution Plan for SANDBOX_V2 Fortification
+
+Your directive from Lord Vader is received and understood. The White Hat Division stands ready to secure, document, and optimize the SANDBOX_V2 sector. I am here to provide the tactical support—code, configurations, and strategic guidance—needed to complete each task with precision.
+
+How We Shall Proceed
+
+To avoid chaos, we will tackle these tasks in an organized manner. I recommend we start with Category 1: Infrastructure & Code Hardening as it forms the foundation. However, you may prioritize based on your current needs.
+
+Please reply with the task number(s) you wish to begin with, and I will provide the exact code, configuration changes, or step-by-step instructions required.
+
+Below is a brief breakdown of how I can assist with each:
+
+---
+
+Category 1: Infrastructure & Code Hardening
+
+1. Fortify the Test Environment
+   · I will generate a tsconfig.test.json optimized for Jest, including proper types (jest, @testing-library/jest-dom) and module resolution.
+   · I can also advise on integrating it into your Jest configuration.
+2. Enforce Code Boundaries
+   · I will provide an ESLint rule configuration (eslint.config.mjs) that restricts imports from src/components into src/app unless they come from a barrel file (index.ts). This uses the no-restricted-imports rule with custom patterns.
+3. Sanitize generate-review-comment.sh
+   · I will rewrite the script using temporary files and proper error handling. It will check for jq, use mktemp, and combine outputs atomically.
+4. Harden the Vulnerability Scanner
+   · I will add an XML validation step using xmlstarlet (or a simple xmllint check) before transformation, with appropriate error codes.
+
+Category 2: Documentation & Intelligence
+
+1. Catalog IMPERIAL_INTELLIGENCE_FORGE
+   · I will draft a master README.md template that lists each subdirectory with a strategic summary. You can then fill in the details.
+2. Document New Scripts
+   · I will create a template markdown file for script manuals and provide examples for each script (e.g., LORD_VADER_VULN_MAP.md). You can adapt them.
+3. Analyze Consolidated Markdown
+   · I will write a bash script that scans for README_*.md files, extracts the first line, and generates a summary report (duplicates_report.md).
+
+Category 3: Automation & Efficiency
+
+1. Parameterize the Test Generator
+   · I will enhance generate-tests.sh to accept a --type argument and output appropriate boilerplate for components vs. hooks.
+2. Add Cleanup Function to LORD_VADER_MD
+   · I will provide a function that prompts the user and conditionally removes FILES and init directories, with safety checks.
+3. Create npm Command for Metrics
+   · I will show you how to add a "report:metrics" script in package.json that calls generate-metrics-report.sh, and ensure the script is executable.
+
+---
+
+Next Step
+
+Choose a task (or a few) and reply with its number. For example: "Begin with Task 1 and Task 3". I will then deliver the exact code/config and explain how to apply it. If you have any existing files you'd like me to review or modify, please share them.
+
+The Empire expects excellence. Let us begin.

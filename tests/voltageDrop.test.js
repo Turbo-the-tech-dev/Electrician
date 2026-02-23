@@ -187,9 +187,51 @@ describe('Voltage Drop Calculator', () => {
       expect(r.error).toBeDefined();
     });
 
-    test('validation — missing inputs returns error', () => {
-      const r = recommendWireSize({ sourceVoltage: 0, current: 20, distance: 100 });
-      expect(r.error).toBeDefined();
+    describe('validation', () => {
+      test('missing source voltage returns error', () => {
+        const r = recommendWireSize({ current: 20, distance: 100 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('zero source voltage returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: 0, current: 20, distance: 100 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('negative source voltage returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: -120, current: 20, distance: 100 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('missing current returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: 120, distance: 100 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('zero current returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: 120, current: 0, distance: 100 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('negative current returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: 120, current: -5, distance: 100 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('missing distance returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: 120, current: 20 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('zero distance returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: 120, current: 20, distance: 0 });
+        expect(r.error).toBeDefined();
+      });
+
+      test('negative distance returns error', () => {
+        const r = recommendWireSize({ sourceVoltage: 120, current: 20, distance: -10 });
+        expect(r.error).toBeDefined();
+      });
     });
   });
 

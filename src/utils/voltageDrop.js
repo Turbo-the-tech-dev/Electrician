@@ -61,6 +61,15 @@ const SYSTEM_MULTIPLIER = {
   'three-phase': Math.sqrt(3),
 };
 
+// Pre-calculate wire sizes for better performance
+const WIRE_SIZES = Object.keys(WIRE_CMA);
+
+// Pre-calculate wire size options for dropdowns
+const WIRE_SIZE_OPTIONS = WIRE_SIZES.map(size => ({
+  label: `${size} AWG`,
+  value: size,
+}));
+
 /**
  * Calculate voltage drop
  * @param {object} inputs - Calculation inputs
@@ -183,10 +192,9 @@ export function recommendWireSize(inputs, maxDropPercent = 3) {
   const requiredCMA = (multiplier * K * current * distance) / maxVoltageDrop;
 
   // Find smallest wire size that meets requirement
-  const wireSizes = Object.keys(WIRE_CMA);
   let recommendedSize = null;
 
-  for (const size of wireSizes) {
+  for (const size of WIRE_SIZES) {
     if (WIRE_CMA[size] >= requiredCMA) {
       recommendedSize = size;
       break;
@@ -219,10 +227,7 @@ export function recommendWireSize(inputs, maxDropPercent = 3) {
  * @returns {Array} Array of wire size objects with label and value
  */
 export function getWireSizes() {
-  return Object.keys(WIRE_CMA).map(size => ({
-    label: `${size} AWG`,
-    value: size,
-  }));
+  return [...WIRE_SIZE_OPTIONS];
 }
 
 /**

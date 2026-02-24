@@ -89,8 +89,16 @@ export function calculate(inputs) {
     return { error: 'Please enter a valid distance greater than 0' };
   }
 
-  if (!wireSize || !WIRE_CMA[wireSize]) {
+  if (!wireSize || !Object.prototype.hasOwnProperty.call(WIRE_CMA, wireSize)) {
     return { error: 'Please select a valid wire size' };
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(RESISTIVITY, material)) {
+    return { error: 'Please select a valid wire material' };
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(SYSTEM_MULTIPLIER, systemType)) {
+    return { error: 'Please select a valid system type' };
   }
 
   // Get values
@@ -172,6 +180,14 @@ export function recommendWireSize(inputs, maxDropPercent = 3) {
   // Validation
   if (!sourceVoltage || sourceVoltage <= 0 || !current || current <= 0 || !distance || distance <= 0) {
     return { error: 'Please provide valid voltage, current, and distance' };
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(RESISTIVITY, material)) {
+    return { error: 'Please select a valid wire material' };
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(SYSTEM_MULTIPLIER, systemType)) {
+    return { error: 'Please select a valid system type' };
   }
 
   const K = RESISTIVITY[material];

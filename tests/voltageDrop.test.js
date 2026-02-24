@@ -145,6 +145,28 @@ describe('Voltage Drop Calculator', () => {
       const r = calculate({ sourceVoltage: 120, current: 20, distance: 100, wireSize: '99' });
       expect(r.error).toBeDefined();
     });
+
+    test('invalid material returns error', () => {
+      const r = calculate({
+        sourceVoltage: 120,
+        current: 20,
+        distance: 100,
+        wireSize: '12',
+        material: 'invalid',
+      });
+      expect(r.error).toBe('Please select a valid wire material');
+    });
+
+    test('invalid system type returns error', () => {
+      const r = calculate({
+        sourceVoltage: 120,
+        current: 20,
+        distance: 100,
+        wireSize: '12',
+        systemType: 'invalid',
+      });
+      expect(r.error).toBe('Please select a valid system type');
+    });
   });
 
   // ── recommendWireSize() ─────────────────────────────────────────────────
@@ -190,6 +212,26 @@ describe('Voltage Drop Calculator', () => {
     test('validation — missing inputs returns error', () => {
       const r = recommendWireSize({ sourceVoltage: 0, current: 20, distance: 100 });
       expect(r.error).toBeDefined();
+    });
+
+    test('invalid material returns error', () => {
+      const r = recommendWireSize({
+        sourceVoltage: 120,
+        current: 20,
+        distance: 100,
+        material: 'invalid',
+      });
+      expect(r.error).toBe('Please select a valid wire material');
+    });
+
+    test('invalid system type returns error', () => {
+      const r = recommendWireSize({
+        sourceVoltage: 120,
+        current: 20,
+        distance: 100,
+        systemType: 'invalid',
+      });
+      expect(r.error).toBe('Please select a valid system type');
     });
   });
 
